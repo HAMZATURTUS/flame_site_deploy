@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL4M3 Team</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background-color: #0c0c0c;
+            color: white;
+        }
+        .hide {
+            display: none;
+        }
+
+        .myDIV:hover .hide {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full bg-black/90 border-b border-gray-800 shadow-lg z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-xl font-bold text-purple-400">FL4M3</h1>
+            <ul class="flex space-x-6 text-gray-300">
+                <li><a href="{% url 'home' %}" class="hover:text-white">Home</a></li>
+                <li><a href="{% url 'writeups:index' %}" class="hover:text-white">Writeups</a></li>
+				        <li><a href="blogs.html" class="hover:text-white">Blogs</a></li>
+				        <li><a href="{% url 'members:index' %}" class="hover:text-white">Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Team Content -->
+    <div class="min-h-screen flex flex-col items-center justify-center px-6 py-20">
+        <h1 class="text-4xl font-bold text-purple-400 mb-6">Meet Our Team</h1>
+        <p class="text-lg text-gray-400 text-center max-w-2xl">
+            Our team consists of 4 Black Niggers    </p>
+
+        <!-- Team Grid -->
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {% if member_list %} {% for member in member_list %}
+            <div class="w-72 p-6 group relative bg-gray-900 p-4 rounded-lg border border-gray-800 shadow-lg hover:scale-110 transition-all cursor-pointer text-center">
+                {% load static %}
+                <img src="{% static member.image.url %}" alt="Image here" class="w-24 h-24 object-contain mx-auto rounded-full mb-3">
+                <h2 class="text-xl font-semibold text-white">{{ member }}</h2>
+                <div class="absolute bottom-0 left-0 right-0 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 bg-gray-900">
+                    <p class="text-gray-300 p-4">
+                        {{ member.description }}
+                    </p>
+                </div>
+            </div>
+            {% endfor %} {% endif %}
+        </div>
+
+    </div>
+
+</body>
+</html>

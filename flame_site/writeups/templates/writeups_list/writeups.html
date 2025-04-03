@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL4M3 Writeups</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-black text-white">
+    <!-- Navigation Bar -->
+    <nav class="fixed top-0 left-0 w-full bg-black/90 border-b border-gray-800 shadow-lg">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <h1 class="text-xl font-bold text-purple-400">FL4M3</h1>
+
+            <!-- Navigation Links -->
+            <ul class="flex space-x-6 text-gray-300">
+                <li><a href="{% url 'home' %}" class="hover:text-white">Home</a></li>
+                <li><a href="{% url 'writeups:index' %}" class="hover:text-white">Writeups</a></li>
+				<li><a href="" class="hover:text-white">Blogs</a></li>
+				<li><a href="{% url 'members:index' %}" class="hover:text-white">Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Page Content -->
+    <section class="container mx-auto px-6 pt-28 pb-16">
+        <div class="text-center">
+            <h1 class="text-5xl font-bold mb-4"><span class="text-purple-400">{{ category }} Writeups</span></h1>
+        </div>
+
+        <!--
+        <div>
+            <h1 class="inline-block bg-green-500/30 text-green-400 text-3xl px-5 py-3 rounded-full">Easy</h1>
+        </div>
+        -->
+
+        {% if easy_writeups %}
+        <div>
+            <h1 class="text-white-400 text-4xl px-5 py-3 rounded-full ">Easy</h1>
+        </div>
+        
+        <!-- Writeups Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-2">
+            
+            {% for writeup in easy_writeups %}
+            <!-- Writeup 1 -->
+            <div class="bg-gray-900 p-4 rounded-lg border border-gray-800 shadow-lg hover:scale-105 transition-all cursor-pointer">
+                <h3 class="text-lg font-bold text-white mb-2">{{ writeup }}</h3>
+                <span class="inline-block bg-purple-500/30 text-purple-300 text-xs px-3 py-1 rounded-full">{{ writeup.author }}</span>
+            </div>
+            {% endfor %}
+            
+        </div>
+
+        {% endif %}
+
+        {% if medium_writeups %}
+        <div>
+            <h1 class="text-white-400 text-4xl px-5 py-3 rounded-full ">Medium</h1>
+        </div>
+        
+        <!-- Writeups Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-2">
+            
+            {% for writeup in medium_writeups %}
+            <!-- Writeup 1 -->
+            <a href="{{ writeup.notion_link }}" target="_blank">
+            <div class="bg-gray-900 p-4 rounded-lg border border-gray-800 shadow-lg hover:scale-105 transition-all cursor-pointer">
+                <h3 class="text-lg font-bold text-white mb-2">{{ writeup }}</h3>
+                <span class="inline-block bg-purple-500/30 text-purple-300 text-xs px-3 py-1 rounded-full">{{ writeup.author }}</span>
+            </div>
+            </a>
+            {% endfor %}
+            
+        </div>
+
+        {% endif %}
+
+        {% if hard_writeups %}
+        <div>
+            <h1 class="text-white-400 text-4xl px-5 py-3 rounded-full ">Hard</h1>
+        </div>
+        
+        <!-- Writeups Grid -->
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-2">
+            
+            {% for writeup in hard_writeups %}
+            <!-- Writeup 1 -->
+            <div class="bg-gray-900 p-4 rounded-lg border border-gray-800 shadow-lg hover:scale-105 transition-all cursor-pointer">
+                <h3 class="text-lg font-bold text-white mb-2">{{ writeup }}</h3>
+                <span class="inline-block bg-purple-500/30 text-purple-300 text-xs px-3 py-1 rounded-full">{{ writeup.author }}</span>
+            </div>
+            {% endfor %}
+            
+        </div>
+
+        {% endif %}
+
+    </section>
+
+</body>
+</html>
