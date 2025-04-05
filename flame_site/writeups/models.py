@@ -30,7 +30,7 @@ class Writeup(models.Model):
     title = models.CharField(max_length=50)
     difficulty = models.ForeignKey(Difficulty, on_delete=models.CASCADE, default=None)
     notion_link = models.CharField(max_length=200, default=None)
-    author = models.ForeignKey(Member, on_delete=models.CASCADE, default=None)
+    author = models.ManyToManyField(Member)
     icon = models.ImageField(upload_to='icons/', blank=True, null=True)
     
     def __str__(self):

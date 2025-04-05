@@ -68,7 +68,11 @@
             <a href="{{ writeup.notion_link }}" target="_blank">
             <div class="bg-gray-900 p-4 rounded-lg border border-gray-800 shadow-lg hover:scale-105 transition-all cursor-pointer">
                 <h3 class="text-lg font-bold text-white mb-2">{{ writeup }}</h3>
-                <span class="inline-block bg-purple-500/30 text-purple-300 text-xs px-3 py-1 rounded-full">{{ writeup.author }}</span>
+                <span class="inline-block bg-purple-500/30 text-purple-300 text-xs px-3 py-1 rounded-full">
+                    {% for author in writeup.author.all %}
+                    {{ author }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </span>
             </div>
             </a>
             {% endfor %}
