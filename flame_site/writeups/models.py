@@ -2,6 +2,16 @@ from django.contrib import admin
 from django.db import models
 from members.models import Member
 
+from wagtail.models import Page
+from wagtail.fields import RichTextField, StreamField
+from wagtail.admin.panels import FieldPanel
+from wagtail.blocks import TextBlock, RichTextBlock
+
+from wagtail.search import index
+
+from wagtailcodeblock.blocks import CodeBlock
+from wagtail.admin.panels import FieldPanel
+
 # Create your models here.
 class Category(models.Model): # forensics, crypto, web
     name = models.CharField(max_length=30)
@@ -24,14 +34,58 @@ class Difficulty(models.Model):
     
     def __str__(self):
         return f"{self.name}"
+    
+class WriteupRootPage(Page):
+    subpage_types = ['writeups.Writeup']
+    parent_page_types = ['wagtailcore.page']
+    show_in_menus_default = False
 
-class Writeup(models.Model):
-    subcategory = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
-    title = models.CharField(max_length=50)
-    difficulty = models.ForeignKey(Difficulty, on_delete=models.CASCADE, default=None)
-    notion_link = models.CharField(max_length=200, default=None)
-    author = models.ManyToManyField(Member)
-    icon = models.ImageField(upload_to='icons/', blank=True, null=True)
+    # Add minimal content panels
+    content_panels = [
+        FieldPanel('title'),  # Required for all pages
+    ]
+
+    class Meta:
+        verbose_name = "Writeups Container"
+
+class Writeup(Page):
+    subcategory = models.ForeignKey(SubCategory, on_delete=models.PROTECT)
+    difficulty = models.ForeignKey(Difficulty, on_delete=models.PROTECT)
+    author = models.ManyToManyField(
+        Member,
+        related_name='writeups',
+        blank=False, 
+        help_text="Ctrl + Click to select more than one author"
+    )
+    #icon = models.ImageField(upload_to='icons/', blank=True, null=True)
+    
+    body = StreamField([
+        ("heading", RichTextBlock()),
+        ("code", CodeBlock(label='Code')),
+    ],
+
+    blank=True,
+    help_text = "Note to writers: Keep in mind that any reader of this writeup is most likely not coming from a CTF, but from a social media platform where a link to our website was shared. The reader does not have access to the source, so you must show as much information as possible using images and code. Make the reader feel like hes there solving the challenge with you and try to make sources that the reader can try to solve on his own"
+    )
+
+    content_panels = Page.content_panels + [
+        FieldPanel("subcategory"),
+        FieldPanel("difficulty"),
+        FieldPanel("author"),
+        FieldPanel("body"),
+    ]
+    
+    parent_page_types = ['writeups.WriteupRootPage'] 
+    subpage_types = [] 
+    
+    def get_context(self, request, *args, **kwargs):
+        context = super().get_context(request, *args, **kwargs)
+        
+        # Add authors to context
+        context['authors'] = self.author.all()
+        
+        
+        return context
     
     def __str__(self):
-        return f"{self.title}"
+        return self.title

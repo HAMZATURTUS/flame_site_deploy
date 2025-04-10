@@ -1,0 +1,25 @@
+
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <article>
+        <h1>{{ page.title }}</h1>
+        
+        <div class="authors">
+            <p>Author(s):</p>
+            {% for author in authors %}
+                <div class="author">
+                    <p>{{ author }}</p>
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="content">
+            {% for block in page.body %}
+                <section class="block-{{ block.block_type }}">
+                    {% include_block block %}
+                </section>
+            {% endfor %}
+        </div>
+    </article>
+{% endblock %}

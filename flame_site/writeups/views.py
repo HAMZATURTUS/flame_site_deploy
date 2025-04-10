@@ -17,9 +17,9 @@ def wlist(request, category_id):
     
     writeup_list = Writeup.objects.filter(subcategory__category=category)
     
-    easy_writeups = writeup_list.filter(difficulty__name='Easy')
-    medium_writeups = writeup_list.filter(difficulty__name='Medium')
-    hard_writeups = writeup_list.filter(difficulty__name='Hard')
+    easy_writeups = writeup_list.filter(difficulty__name='Easy').live()
+    medium_writeups = writeup_list.filter(difficulty__name='Medium').live()
+    hard_writeups = writeup_list.filter(difficulty__name='Hard').live()
     
     context = {
         'category': category,
