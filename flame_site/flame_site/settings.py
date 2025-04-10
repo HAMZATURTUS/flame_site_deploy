@@ -23,6 +23,24 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, ''),
 ]
 
+DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000
+WAGTAIL_SITE_NAME = 'Wagtail site'
+WAGTAILDOCS_EXTENSIONS = ['csv', 'docx', 'key', 'odt', 'pdf', 'pptx', 'rtf', 'txt', 'xlsx', 'zip', 'png']
+WAGTAILADMIN_BASE_URL = '/cms'
+
+WAGTAIL_CODE_BLOCK_LINE_NUMBERS = False
+WAGTAIL_CODE_BLOCK_THEME = 'twilight'
+WAGTAIL_CODE_BLOCK_LANGUAGES = (
+    ('bash', 'Bash/Shell'),
+    ('css', 'CSS'),
+    ('diff', 'diff'),
+    ('html', 'HTML'),
+    ('javascript', 'Javascript'),
+    ('json', 'JSON'),
+    ('python', 'Python'),
+    ('scss', 'SCSS'),
+    ('yaml', 'YAML'),
+)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -39,6 +57,22 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtailcodeblock',
+    'wagtail.contrib.forms',
+    'wagtail.contrib.redirects',
+    'wagtail.embeds',
+    'wagtail.sites',
+    'wagtail.users',
+    'wagtail.snippets',
+    'wagtail.documents',
+    'wagtail.images',
+    'wagtail.search',
+    'wagtail.admin',
+    'wagtail',
+
+    'modelcluster',
+    'taggit',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
