@@ -35,9 +35,22 @@ class Difficulty(models.Model):
     def __str__(self):
         return f"{self.name}"
     
+class RootPage(Page):
+    subpage_types = ['writeups.WriteupRootPage']
+    parent_page_types = ['wagtailcore.page']
+    show_in_menus_default = False
+
+    # Add minimal content panels
+    content_panels = [
+        FieldPanel('title'),  # Required for all pages
+    ]
+
+    class Meta:
+        verbose_name = "Container for basically everything"
+
 class WriteupRootPage(Page):
     subpage_types = ['writeups.Writeup']
-    parent_page_types = ['wagtailcore.page']
+    parent_page_types = ['wagtailcore.page', 'writeups.RootPage']
     show_in_menus_default = False
 
     # Add minimal content panels
