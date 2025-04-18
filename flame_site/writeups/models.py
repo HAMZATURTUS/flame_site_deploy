@@ -40,10 +40,6 @@ class RootPage(Page):
     parent_page_types = ['wagtailcore.page']
     show_in_menus_default = False
 
-    # Add minimal content panels
-    content_panels = [
-        FieldPanel('title'),  # Required for all pages
-    ]
 
     class Meta:
         verbose_name = "Container for basically everything"
@@ -53,15 +49,14 @@ class WriteupRootPage(Page):
     parent_page_types = ['wagtailcore.page', 'writeups.RootPage']
     show_in_menus_default = False
 
-    # Add minimal content panels
-    content_panels = [
-        FieldPanel('title'),  # Required for all pages
-    ]
+    
 
     class Meta:
         verbose_name = "Writeups Container"
 
 class Writeup(Page):
+    template = "writeups/writeup.html"
+    
     subcategory = models.ForeignKey(SubCategory, on_delete=models.PROTECT)
     difficulty = models.ForeignKey(Difficulty, on_delete=models.PROTECT)
     author = models.ManyToManyField(

@@ -14,10 +14,47 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    color: #ffffff;
+    color: #000000;
     margin: 0 0 1rem 0;
 }
 
 h1 { font-size: 2.5rem; }
 h2 { font-size: 2rem; }
 /* ... rest of your CSS ... */
+
+.text-center.mb-12 {
+                display: none;
+            }
+            /* Grid Background */
+            body {
+                background-color: #0c0c0c;
+                background-image: linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+                                linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+                background-size: 30px 30px;
+            }
+
+
+            /* Blinking Cursor */
+            @keyframes blink {
+                50% { opacity: 0; }
+            }
+            .animate-blink {
+                animation: blink 1s infinite;
+            }
+            @layer utilities {
+            /* Example: change px-6 from 1.5rem to 2rem */
+                .px-6 {
+                    padding-left: 2rem !important;
+                    padding-right: 2rem !important;
+                }
+
+                /* Example: change pt-28 from 7rem to 5rem */
+                .pt-28 {
+                    padding-top: 5rem !important;
+                }
+
+                /* Example: change pb-16 from 4rem to 3rem */
+                .pb-16 {
+                    padding-bottom: 3rem !important;
+                }
+            }

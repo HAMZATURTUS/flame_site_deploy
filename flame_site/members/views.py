@@ -10,4 +10,4 @@ def index(request):
     
     context = {"member_list": member_list}
     
-    return render(request, "index.html", context)
+    return render(request, "index/index.html", context)

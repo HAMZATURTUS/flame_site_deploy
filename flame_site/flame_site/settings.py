@@ -33,12 +33,17 @@ WAGTAIL_CODE_BLOCK_THEME = 'twilight'
 WAGTAIL_CODE_BLOCK_LANGUAGES = (
     ('bash', 'Bash/Shell'),
     ('css', 'CSS'),
+    ('c', 'C'),
+    ('csharp', 'C#'),
+    ('cpp', 'C++'),
     ('diff', 'diff'),
     ('html', 'HTML'),
+    ('java', 'Java'),
     ('javascript', 'Javascript'),
     ('json', 'JSON'),
     ('python', 'Python'),
     ('scss', 'SCSS'),
+    ('text', 'Plain Text'),
     ('yaml', 'YAML'),
 )
 
