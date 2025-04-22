@@ -1,0 +1,124 @@
+{% extends "flame_site/base.html" %}
+
+{% load static %}
+
+{% block content %}
+    
+
+            <!-- Hero Section -->
+    <div id="hero-section">
+        <div id="hero-container">
+            <!-- Left Content -->
+            <div id="hero-content">
+                <span id="hero-badge">
+                    CYBERSECURITY COLLECTIVE
+                </span>
+                <h1 id="hero-title">
+                    Welcome to <span id="flowing-colors">FL4M3</span><br>
+                    <span id="hero-subtitle">Cybersecurity Team</span>
+                </h1>
+                <p id="hero-description">
+                    Elite cybersecurity professionals dedicated to excellence in digital defense
+                </p>
+                <div id="hero-buttons">
+                    <button id="join-button">
+                        Join FL4M3 →
+                    </button>
+                    <a href="{% url 'members:index' %}">
+                        <button id="team-button">
+                            Meet the Team
+                        </button>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Terminal Section -->
+            <div id="terminal-container">
+                <div id="terminal-header">
+                    <div id="terminal-buttons">
+                        <div id="terminal-button-red"></div>
+                        <div id="terminal-button-yellow"></div>
+                        <div id="terminal-button-green"></div>
+                    </div>
+                    <div id="terminal-title">
+                        <svg id="terminal-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                        <span id="terminal-path">fl4m3@kali:~/security</span>
+                    </div>
+                </div>
+                <div id="terminal-output">
+                    <div id="terminal-command-line">
+                        <span id="terminal-prompt">fl4m3@kali</span>
+                        <span id="terminal-colon">:</span>
+                        <span id="terminal-directory">~/security</span>
+                        <span id="terminal-dollar">$ </span>
+                        <span id="typing-effect">./fl4m3_init.sh</span>
+                    </div>
+                    <div id="output-line-1">[+] Initializing FL4M3 Framework v2.1.0...</div>
+                    <div id="output-line-2">[*] Checking system requirements...</div>
+                    <div id="output-line-3">[+] Loading modules:</div>
+                    <div id="output-line-4">
+                        <span id="success-icon">✓</span> Core Engine
+                        <span id="time-indicator-1">250ms</span>
+                    </div>
+                    <div id="output-line-5">
+                        <span id="success-icon-2">✓</span> Security Protocols
+                        <span id="time-indicator-2">180ms</span>
+                    </div>
+                    <div id="output-line-6">
+                        <span id="success-icon-3">✓</span> Network Stack
+                        <span id="time-indicator-3">320ms</span>
+                    </div>
+                    <div id="output-line-7">[*] Establishing secure connection...</div>
+                    <div id="output-line-8">[✓] Connection established (SSL/TLS v1.3)</div>
+                    <div id="output-line-9">[*] Running security checks...</div>
+                    <div id="output-line-10">[✓] All security checks passed</div>
+                    <div id="output-line-11">[*] Type 'help' for available commands</div>
+                </div>
+                <div id="terminal-input-container">
+                    <span id="input-prompt">fl4m3@kali</span>
+                    <span id="input-colon">:</span>
+                    <span id="input-directory">~/security</span>
+                    <span id="input-dollar">$ </span>
+                    <span id="terminal-input" contenteditable="true"></span>
+                    <span id="cursor"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <section id="about-section">
+        <div id="about-container">
+            <span id="about-badge">
+                ABOUT US
+            </span>
+            <h2 id="about-title">
+                Who We Are
+            </h2>
+            <p id="about-description-1">
+                FL4M3 is a dedicated cybersecurity collective focused on ethical hacking, 
+                digital forensics, and cybersecurity research. We strive to create a community 
+                where security enthusiasts can learn, collaborate, and improve their skills.
+            </p>
+            <p id="about-description-2">
+                Our team consists of passionate professionals who engage in CTF challenges, 
+                vulnerability research, and security consulting. Join us to be part of a growing 
+                network of experts.
+            </p>
+            <div id="about-buttons">
+                <button id="learn-more-button">
+                    Learn More
+                </button>
+                <button id="contact-button">
+                    Contact Us
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+
+{% endblock %}
+

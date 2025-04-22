@@ -18,9 +18,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 MEDIA_URL = "/src/images/"
 MEDIA_ROOT=os.path.join(BASE_DIR,"src/images/")
 
-STATIC_URL = '/static/'
+STATIC_URL = '/src/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, ''),
+    BASE_DIR / 'src',
 ]
 
 DATA_UPLOAD_MAX_NUMBER_FIELDS = 10_000

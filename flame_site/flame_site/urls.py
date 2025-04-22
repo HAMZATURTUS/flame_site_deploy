@@ -20,7 +20,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import home
+from .views import home, index
 
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
@@ -37,6 +37,7 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
     path('', home, name="home"),
+    path('index/', index, name="index"),
     path('writeups/', include('writeups.urls')),
     path('members/', include('members.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
