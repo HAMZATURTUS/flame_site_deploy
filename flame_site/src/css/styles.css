@@ -1,4 +1,11 @@
 /* Base Styles */
+:root {
+  /* Define two custom properties: a color and a spacing value */
+  --ht_purple: #C084FC;
+  --ht_button_fill: #8f44da;
+}
+
+
 #main-body {
     background-color: #080810;
     background-image: 
@@ -11,6 +18,14 @@
     margin: 0;
     padding: 0;
     min-height: 100vh;
+}
+
+.hide {
+    display: none;
+}
+
+.myDIV:hover .hide {
+    display: block;
 }
 
 /* Navigation Styles */
@@ -36,9 +51,9 @@
 }
 
 #site-logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
-    color: #8a5cf6;
+    color: var(--ht_purple);
     margin: 0;
     letter-spacing: 1px;
 }
@@ -58,14 +73,21 @@
 #nav-menu a {
     color: #d1d5db;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1rem;
     font-weight: 500;
     letter-spacing: 0.5px;
-    transition: color 0.2s;
 }
 
-#nav-home:hover, #nav-writeups:hover, #nav-blogs:hover, #nav-team:hover {
-    color: white;
+#nav-button {
+  color: white;
+  border: 1px solid transparent;
+  width: 20%;
+  padding: 0px;
+  transition: border-color 0.75s ease;
+}
+
+#nav-button:hover {
+  border-bottom-color: white;
 }
 
 /* Hero Section Styles */
@@ -99,7 +121,7 @@
 #hero-badge {
     display: inline-block;
     background-color: rgba(88, 28, 135, 0.2);
-    color: #8a5cf6;
+    color: var(--ht_purple);
     padding: 0.35rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.8rem;
@@ -138,7 +160,7 @@
 }
 
 #join-button {
-    background-color: #8a5cf6;
+    background-color: var(--ht_button_fill);
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 0.25rem;
@@ -154,8 +176,8 @@
 
 #team-button {
     background-color: transparent;
-    border: 1px solid #8a5cf6;
-    color: #8a5cf6;
+    border: 1px solid var(--ht_purple);
+    color: var(--ht_purple);
     padding: 0.75rem 1.5rem;
     border-radius: 0.25rem;
     font-weight: 600;
@@ -247,15 +269,15 @@
 }
 
 #terminal-colon, #input-colon {
-    color: #8a5cf6;
+    color: var(--ht_purple);
 }
 
 #terminal-directory, #input-directory {
-    color: #8a5cf6;
+    color: var(--ht_purple);
 }
 
 #terminal-dollar, #input-dollar {
-    color: #8a5cf6;
+    color: var(--ht_purple);
     margin-right: 0.5rem;
 }
 
@@ -302,6 +324,18 @@
     outline: none;
     min-width: 1rem;
 }
+#terminal-user-input {
+    margin-left: 0px;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-family: 'Consolas', 'Monaco', monospace;
+    color: #d1d5db;
+    max-width: 130px;
+
+    caret-color: #d1d5db;
+}
+
 
 /* Cursor Animation */
 @keyframes cursor-blink {
@@ -310,13 +344,15 @@
     100% { opacity: 0; }
 }
 
+
 #cursor {
-    display: inline-block;
+    display: none;
     width: 8px;
     height: 15px;
     background-color: #27c93f;
     animation: cursor-blink 1s infinite;
-    margin-left: 2px;
+    margin-top: 5px;
+    margin-left: 0px;
     vertical-align: middle;
 }
 
@@ -336,7 +372,7 @@
 #about-badge {
     display: inline-block;
     background-color: rgba(88, 28, 135, 0.2);
-    color: #8a5cf6;
+    color: var(--ht_purple);
     padding: 0.35rem 0.75rem;
     border-radius: 9999px;
     font-size: 0.8rem;
@@ -368,7 +404,7 @@
 }
 
 #learn-more-button {
-    background-color: #8a5cf6;
+    background-color: var(--ht_button_fill);
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 0.25rem;
@@ -384,8 +420,8 @@
 
 #contact-button {
     background-color: transparent;
-    border: 1px solid #8a5cf6;
-    color: #8a5cf6;
+    border: 1px solid var(--ht_purple);
+    color: var(--ht_purple);
     padding: 0.75rem 1.5rem;
     border-radius: 0.25rem;
     font-weight: 600;
@@ -450,7 +486,7 @@
 }
 
 #link-writeups:hover, #link-blog:hover, #link-join:hover {
-    color: #8a5cf6;
+    color: var(--ht_purple);
 }
 
 #social-icons {
@@ -464,7 +500,7 @@
 }
 
 #icon-github:hover, #icon-twitter:hover, #icon-instagram:hover, #icon-facebook:hover, #icon-discord:hover, #icon-linkedin:hover {
-    color: #8a5cf6;
+    color: var(--ht_purple);
 }
 
 #icon-github i, #icon-twitter i, #icon-instagram i, #icon-facebook i, #icon-discord i, #icon-linkedin i {
@@ -488,13 +524,17 @@
 #flowing-colors {
     background: linear-gradient(
         to right,
-        #8a5cf6,
+        var(--ht_purple),
         #7c4dff,
-        #8a5cf6
+        var(--ht_purple)
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
     animation: flowingGradient 3s linear infinite;
+}
+
+#content{
+    margin-top: 5%;
 }

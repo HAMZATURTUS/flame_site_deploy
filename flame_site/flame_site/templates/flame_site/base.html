@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 {% load static %}
 
 <html lang="en">
@@ -7,9 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FL4M3 Cybersecurity</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://kit.fontawesome.com/9a40b05f6b.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    
 </head>
 <body id="main-body">
     <!-- Navigation Bar -->
@@ -17,10 +18,10 @@
         <div id="nav-container">
             <h1 id="site-logo">FL4M3</h1>
             <ul id="nav-menu">
-                <li><a href="{% url 'home' %}" class="hover:text-white">Home</a></li>
-                <li><a href="{% url 'writeups:index' %}" class="hover:text-white">Writeups</a></li>
-                <li><a href="" class="hover:text-white">Blogs</a></li>
-                <li><a href="{% url 'members:index' %}" class="hover:text-white">Team</a></li>
+                <li><a href="{% url 'home' %}" id="nav-button">Home</a></li>
+                <li><a href="{% url 'writeups:index' %}" id="nav-button">Writeups</a></li>
+                <li><a href="" id="nav-button">Blogs</a></li>
+                <li><a href="{% url 'members:index' %}" id="nav-button">Team</a></li>
             </ul>
         </div>
     </nav>
