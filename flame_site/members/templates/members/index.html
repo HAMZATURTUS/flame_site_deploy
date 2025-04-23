@@ -5,27 +5,44 @@
 {% block content %}
     
 
-    <div class="min-h-screen flex flex-col items-center justify-center px-6 py-20">
-        <h1 class="text-4xl font-bold text-purple-400 mb-6">Meet Our Team</h1>
-        <p class="text-lg text-gray-400 text-center max-w-2xl">
-            Our team consists of 4 members    </p>
+    <div class="team-container">
+        <h1 class="team-heading">Meet Our Team</h1>
+        <p class="team-description">
+            Our team consists of 4 members
+        </p>
 
         <!-- Team Grid -->
-        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="team-grid">
             {% if member_list %} {% for member in member_list %}
-            <div class="w-72 p-6 group relative bg-gray-900 p-4 rounded-lg border border-gray-800 shadow-lg hover:scale-110 transition-all cursor-pointer text-center">
-                {% load static %}
-                <img src="{% static member.image.url %}" alt="Image here" class="w-24 h-24 object-contain mx-auto rounded-full mb-3">
-                <h2 class="text-xl font-semibold text-white">{{ member }}</h2>
-                <div class="absolute bottom-0 left-0 right-0 overflow-hidden max-h-0 group-hover:max-h-40 transition-all duration-300 bg-gray-900">
-                    <p class="text-gray-300 p-4">
-                        {{ member.description }}
-                    </p>
+            <label>
+                <div class="team-card">
+                    <input type="checkbox" class="checkbox" />
+                    {% load static %}
+                    <img src="{% static member.image.url %}" alt="Image here" class="team-image">
+                    <h2 class="team-member-name">{{ member }}</h2>
+                    <div class="team-description-popup">
+                        <div class="blog-button-container">
+                            <a class="blog-button">
+                                <button> {{ member.first_name }}'s Blogs</button>
+                            </a>
+                        </div>
+                        <div id="social-icons">
+                            <a href="#" id="icon-github">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" id="icon-email">
+                                <i class="fa fa-envelope" aria-hidden="true"></i>
+                            </a>
+                            <a href="#" id="icon-linkedin">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </label>
+
             {% endfor %} {% endif %}
         </div>
-
     </div>
 
     

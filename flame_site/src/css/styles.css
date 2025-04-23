@@ -634,11 +634,11 @@
     transition: color 0.2s;
 }
 
-#icon-github:hover, #icon-twitter:hover, #icon-instagram:hover, #icon-facebook:hover, #icon-discord:hover, #icon-linkedin:hover {
+#icon-github:hover, #icon-twitter:hover, #icon-instagram:hover, #icon-email:hover, #icon-discord:hover, #icon-linkedin:hover {
     color: var(--ht_purple);
 }
 
-#icon-github i, #icon-twitter i, #icon-instagram i, #icon-facebook i, #icon-discord i, #icon-linkedin i {
+#icon-github i, #icon-twitter i, #icon-instagram i, #icon-email i, #icon-discord i, #icon-linkedin i {
     font-size: 1.5rem;
 }
 
@@ -671,7 +671,6 @@
 }
 
 #content{
-    margin-top: 6rem;
 }
 
 #difficulty-span-parent {
@@ -772,6 +771,143 @@ article p{
     .richtext-image.full-width {
         margin-left: 12%;
         width: 75%;
+    }
+
+}
+
+/* Team Section Styles */
+.team-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 6rem;
+}
+
+.team-heading {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: #c084fc;
+    margin-bottom: 1.5rem;
+}
+
+.team-description {
+    font-size: 1.125rem;
+    color: #9ca3af;
+    text-align: center;
+    max-width: 56rem;
+}
+
+.team-grid {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
+}
+
+.team-card {
+    width: 18rem;
+    padding: 1.5rem;
+    position: relative;
+    background: #111827;
+    border-radius: 0.5rem;
+    border: 1px solid #1f2937;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    text-align: center;
+}
+
+.team-card:hover {
+    transform: scale(1.1);
+}
+
+.team-image {
+    width: 6rem;
+    height: 6rem;
+    object-fit: contain;
+    margin: 0 auto;
+    border-radius: 9999px;
+    margin-bottom: 0.75rem;
+}
+
+.team-member-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: white;
+}
+
+.team-description-popup {
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    max-height: 0;
+    background: #111827;
+    transition: max-height 0.3s ease;
+}
+
+.team-description-popup #social-icons {
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+.member-description {
+    color: #d1d5db;
+    padding: 1rem;
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+    .team-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .team-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.blog-button-container {
+    margin: 15px 0px;
+}
+
+.blog-button {
+    background-color: transparent;
+    border: 1px solid var(--ht_purple);
+    color: var(--ht_purple);
+    padding: 0.4rem 1rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.blog-button:hover {
+    background-color: rgba(138, 92, 246, 0.1);
+}
+
+.team-card:hover .team-description-popup {
+    max-height: 10rem;
+}
+
+.team-card .checkbox {
+    display: none;
+}
+
+@media (max-width: 768px) {
+
+    input[type="checkbox"]:checked ~ .team-description-popup {
+        max-height: 10rem;
+    }
+
+    .blog-button:active {
+        background-color: rgba(138, 92, 246, 0.1);
     }
 
 }
