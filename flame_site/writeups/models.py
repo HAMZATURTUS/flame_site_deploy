@@ -91,6 +91,8 @@ class Writeup(Page):
         
         # Add authors to context
         context['authors'] = self.author.all()
+        context['difficulty'] = self.difficulty
+        context['subcategory'] = self.subcategory.name
         
         
         return context

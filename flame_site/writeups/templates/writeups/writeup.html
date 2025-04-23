@@ -5,14 +5,24 @@
 
 
 
-
 {% block content %}
-    <article style="width:50%; margin: auto">
+    <article id="writeup-article">
         <h1>{{ page.title }}</h1>
         
-        <div class="authors">
-            <p>Author{{ authors|pluralize }}: {{ authors|join:", " }}</p>
+        <div id="difficulty-span-parent">
+            <span id="category-span" style="margin-right: 5px">
+                {{ subcategory }}
+            </span>
+            <span id="difficulty-span-{{ difficulty }}">
+                {{ difficulty }}
+            </span>
         </div>
+
+
+        <div id="authors">
+            <h4>Author{{ authors|pluralize }}: {{ authors|join:", " }}</h4>
+        </div>
+
 
         <div class="content">
             {% for block in page.body %}
