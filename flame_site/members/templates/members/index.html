@@ -17,23 +17,25 @@
             <label>
                 <div class="team-card">
                     <input type="checkbox" class="checkbox" />
-                    {% load static %}
-                    <img src="{% static member.image.url %}" alt="Image here" class="team-image">
+                    <img src="{{ member.image.url }}" alt="Image here" class="team-image">
                     <h2 class="team-member-name">{{ member }}</h2>
                     <div class="team-description-popup">
                         <div class="blog-button-container">
+                            <div class="uni-button">
+                                <img src="{{ member.university.logo.url }}" alt="{{ member.university.initials }}"/>
+                            </div>
                             <a class="blog-button">
                                 <button> {{ member.first_name }}'s Blogs</button>
                             </a>
+                            <div class="uni-button2">
+                                {{ member.major.initials }}
+                            </div>
                         </div>
                         <div id="social-icons">
-                            <a href="#" id="icon-github">
+                            <a href="{{ member.github }}" id="icon-github" target="_blank">
                                 <i class="fab fa-github"></i>
                             </a>
-                            <a href="#" id="icon-email">
-                                <i class="fa fa-envelope" aria-hidden="true"></i>
-                            </a>
-                            <a href="#" id="icon-linkedin">
+                            <a href="{{ member.linkedin }}" id="icon-linkedin" target="_blank">
                                 <i class="fab fa-linkedin"></i>
                             </a>
                         </div>
