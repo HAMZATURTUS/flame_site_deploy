@@ -23,7 +23,14 @@
             <div id="authors">
                 <h4>Author{{ authors|pluralize }}: {{ authors|join:", " }}</h4>
             </div>
-
+            
+            <div id="datetime-container">
+                <h5>Published: 
+                    <time datetime="{{ page.date|date:'c' }}">
+                        {{ page.date|date:"M-d Y" }} 
+                    </time>
+                </h5>
+            </div>
 
             <div class="content">
                 {% for block in page.body %}

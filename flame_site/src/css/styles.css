@@ -756,6 +756,9 @@ article h3{
 article h4{
     font-size: 26px !important;
 }
+article h5{
+    font-size: 22px !important;
+}
 article p{
 
     hyphens: auto;

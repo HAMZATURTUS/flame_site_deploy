@@ -1,5 +1,7 @@
 from django.contrib import admin
+from django.utils import timezone
 from django.db import models
+
 from members.models import Member
 
 from wagtail.models import Page
@@ -46,7 +48,7 @@ class RootPage(Page):
 
 class WriteupRootPage(Page):
     subpage_types = ['writeups.Writeup']
-    parent_page_types = ['wagtailcore.page', 'writeups.RootPage']
+    parent_page_types = ['writeups.RootPage']
     show_in_menus_default = False
 
     
@@ -56,6 +58,12 @@ class WriteupRootPage(Page):
 
 class Writeup(Page):
     template = "writeups/writeup.html"
+    
+    date = models.DateTimeField(
+        verbose_name="Post date",
+        default=timezone.now,
+        help_text="Date and time the article is published",
+    )
     
     subcategory = models.ForeignKey(SubCategory, on_delete=models.PROTECT)
     difficulty = models.ForeignKey(Difficulty, on_delete=models.PROTECT)
@@ -79,6 +87,7 @@ class Writeup(Page):
     content_panels = Page.content_panels + [
         FieldPanel("subcategory"),
         FieldPanel("difficulty"),
+        FieldPanel("date"),
         FieldPanel("author"),
         FieldPanel("body"),
     ]
@@ -96,6 +105,10 @@ class Writeup(Page):
         
         
         return context
+    
+    class Meta:
+        verbose_name = "Writeup"
+        ordering = ["-date"] 
     
     def __str__(self):
         return self.title
