@@ -30,10 +30,10 @@
                 </div>
             <div id="nav-menu-container">
                 <ul id="nav-menu">
-                    <li><a href="{% url 'home' %}" id="nav-button"><span class="nav-text">Home</span></a></li>
+                    <li><a href="{% url 'home' %}" class="first-nav-button" id="nav-button"><span class="nav-text">Home</span></a></li>
                     <li><a href="{% url 'writeups:index' %}" id="nav-button"><span class="nav-text">Writeups</span></a></li>
-                    <li><a href="" id="nav-button"><span class="nav-text">Blogs</span></a></li>
-                    <li id="last-nav-button"><a href="{% url 'members:index' %}" id="nav-button"><span class="nav-text">Team</span></a></li>
+                    <li><a href="{{ first_blog_url }}" id="nav-button"><span class="nav-text">Blogs</span></a></li>
+                    <li id="last-nav-button"><a href="{% url 'members:index' %}" class="last-nav-button" id="nav-button"><span class="nav-text">Team</span></a></li>
                 </ul>
             </div>
         </div>

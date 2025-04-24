@@ -38,7 +38,7 @@ class Difficulty(models.Model):
         return f"{self.name}"
     
 class RootPage(Page):
-    subpage_types = ['writeups.WriteupRootPage']
+    subpage_types = ['writeups.WriteupRootPage', 'blogs.BlogRootPage']
     parent_page_types = ['wagtailcore.page']
     show_in_menus_default = False
 
