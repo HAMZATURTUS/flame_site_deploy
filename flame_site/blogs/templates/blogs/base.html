@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FL4M3 Cybersecurity</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+</head>
+<body id="main-body">
+    <!-- Navigation Bar -->
+    <nav id="main-nav">
+        <div id="nav-container">
+            <div id="logo-container">
+                <a href="{% url 'home' %}">
+                    <img src="{{ MEDIA_URL }}site_files/logo.png" id="site-logo">
+                </a>
+            </div>
+
+            <input class="checkbox" type="checkbox" name="" id="" />
+                <div class="hamburger-lines">
+                    <span class="line line1"></span>
+                    <span class="line line2"></span>
+                    <span class="line line3"></span>
+                </div>
+            <div id="nav-menu-container">
+                <ul id="nav-menu">
+                    <li><a href="{% url 'home' %}" class="first-nav-button" id="nav-button"><span class="nav-text">Home</span></a></li>
+                    <li><a href="{% url 'writeups:index' %}" id="nav-button"><span class="nav-text">Writeups</span></a></li>
+                    <li><a href="{{ first_blog_url }}" id="nav-button"><span class="nav-text">Blogs</span></a></li>
+                    <li id="last-nav-button"><a href="{% url 'members:index' %}" class="last-nav-button" id="nav-button"><span class="nav-text">Team</span></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    
+    
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer id="main-footer">
+        <div id="footer-container">
+            <div id="footer-content">
+                <div id="footer-contact">
+                    <h3 id="contact-heading">Contact</h3>
+                    <p id="contact-email">Email: contact@fl4m3.com</p>
+                    <p id="contact-discord">Discord: FL4M3 Community</p>
+                </div>
+                <div id="footer-links">
+                    <h3 id="links-heading">Quick Links</h3>
+                    <ul id="quick-links">
+                        <li><a href="{% url 'writeups:index' %}" id="link-writeups">CTF Writeups</a></li>
+                        <li><a href="#" id="link-blog">Team Blog</a></li>
+                        <li><a href="#" id="link-join">Join Us</a></li>
+                    </ul>
+                </div>
+                <div id="footer-social">
+                    <h3 id="social-heading">Follow Us</h3>
+                    <div id="social-icons">
+                        <a href="#" id="icon-github">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="#" id="icon-twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" id="icon-instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" id="icon-facebook">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" id="icon-discord">
+                            <i class="fab fa-discord"></i>
+                        </a>
+                        <a href="#" id="icon-linkedin">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div id="footer-copyright">
+                <p id="copyright-text">&copy; 2024 FL4M3 Cybersecurity. No rights reserved :(.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

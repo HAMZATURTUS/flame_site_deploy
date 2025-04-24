@@ -15,6 +15,12 @@ from wagtailcodeblock.blocks import CodeBlock
 from wagtail.admin.panels import FieldPanel
 
 # Create your models here.
+class BlogType(models.Model):
+    name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return f"{self.name}"
+
 class BlogRootPage(Page):
     subpage_types = ['blogs.Blog']
     parent_page_types = ['writeups.RootPage']
@@ -34,7 +40,7 @@ class Blog(Page):
         help_text="Date and time the article is published",
     )
     
-    blog_type = models.CharField(max_length=50, null=True, blank=True)
+    blog_type = models.ForeignKey(BlogType, on_delete=models.PROTECT, null=True, blank=True)
     author = models.ManyToManyField(
         Member,
         related_name='blogs',
