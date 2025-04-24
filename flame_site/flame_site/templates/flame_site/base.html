@@ -16,9 +16,11 @@
     <!-- Navigation Bar -->
     <nav id="main-nav">
         <div id="nav-container">
-            <a href="{% url 'home' %}">
-                <img src="{{ MEDIA_URL }}site_files/logo.png" id="site-logo">
-            </a>
+            <div id="logo-container">
+                <a href="{% url 'home' %}">
+                    <img src="{{ MEDIA_URL }}site_files/logo.png" id="site-logo">
+                </a>
+            </div>
 
             <input class="checkbox" type="checkbox" name="" id="" />
                 <div class="hamburger-lines">
@@ -26,13 +28,14 @@
                     <span class="line line2"></span>
                     <span class="line line3"></span>
                 </div>
-
-            <ul id="nav-menu">
-                <li><a href="{% url 'home' %}" id="nav-button">Home</a></li>
-                <li><a href="{% url 'writeups:index' %}" id="nav-button">Writeups</a></li>
-                <li><a href="" id="nav-button">Blogs</a></li>
-                <li id="last-nav-button"><a href="{% url 'members:index' %}" id="nav-button">Team</a></li>
-            </ul>
+            <div id="nav-menu-container">
+                <ul id="nav-menu">
+                    <li><a href="{% url 'home' %}" id="nav-button"><span class="nav-text">Home</span></a></li>
+                    <li><a href="{% url 'writeups:index' %}" id="nav-button"><span class="nav-text">Writeups</span></a></li>
+                    <li><a href="" id="nav-button"><span class="nav-text">Blogs</span></a></li>
+                    <li id="last-nav-button"><a href="{% url 'members:index' %}" id="nav-button"><span class="nav-text">Team</span></a></li>
+                </ul>
+            </div>
         </div>
     </nav>
     

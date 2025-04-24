@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
+    'wagtailcache',
     'wagtail',
 
     'modelcluster',
@@ -91,6 +92,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'wagtailcache.cache.UpdateCacheMiddleware', # must be first
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -98,7 +100,17 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'wagtailcache.cache.FetchFromCacheMiddleware', # must be last
 ]
+
+CACHES = {
+    "default": {
+        "BACKEND": "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": BASE_DIR / "cache",
+        "KEY_PREFIX": "wagtailcache",
+        "TIMEOUT": 4 * 60 * 60,  # 4 hours (in seconds)
+    }
+}
 
 ROOT_URLCONF = 'flame_site.urls'
 

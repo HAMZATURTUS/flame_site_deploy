@@ -34,6 +34,7 @@
 /* Navigation Styles */
 #main-nav {
     width: 100vw;
+    height: fit-content;
     position: fixed;
     top: 0;
     left: 0;
@@ -46,13 +47,18 @@
 #nav-container {
     background-color: rgba(10, 10, 15, 1);
     width: 70%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
-    padding: 0.75rem 2rem;
+    padding: 0rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 50;
+}
+
+#logo-container {
+    padding: 0.5rem 0;
 }
 
 #site-logo {
@@ -62,7 +68,12 @@
     z-index: -1;
 }
 
+#nav-menu-container {
+    height: 100%;
+}
+
 #nav-menu {
+    height: 100%;
     justify-content: center;
     align-items: center;
     display: flex;
@@ -74,12 +85,14 @@
 }
 
 #nav-menu li {
-    padding: auto;
-    text-align: center;
+    
+    position: relative;
+    display: flex;
+    padding: 0; 
+    
     width: 150px;
     height: 100%;
-    justify-content: center;
-    align-items: center;
+    text-align: center;
     border-right: 1px solid white;
 }
 
@@ -88,22 +101,25 @@
 }
 
 #nav-button {
-    font-size: 1rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
+    width: 100%;
+    height: 100%;
+    padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: white;
     border: 1px solid transparent;
-    font-size: 1rem;
-    width: 10%;
-    padding: 0px;
-    transition: border-color 0.75s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    background: transparent;
+    font-size: 1.1rem;
 }
-
-
 
 #nav-button:hover {
-  border-bottom-color: white;
+    background: rgb(58, 58, 58);
 }
+
 
 .hamburger-lines, #nav-container .checkbox {
     display: none;
@@ -113,20 +129,20 @@
 
     #nav-menu {
         gap: 0;
-        justify-content: center; /* Horizontally center */
-        align-items: center; /* Vertically center */
-        position: fixed; /* Changed from default */
-        top: 70px; /* Height of your navbar */
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 70px;
         height: fit-content;
         left: 0;
-        padding-top: 20px; /* Reduced from 120px */
-        background: #111; /* Match navbar background */
-        transform: translateY(-150%); /* Changed to vertical translation */
+        padding-top: 20px;
+        background: #111;
+        transform: translateY(-150%);
         display: flex;
         flex-direction: column;
         transition: transform 0.5s ease-in-out;
         width: 100%;
-        z-index: -1; /* Below navbar but above content */
+        z-index: -1;
         padding-bottom: 0px;
         padding-top: 0px;
     }
@@ -146,7 +162,7 @@
         cursor: pointer;
     }
     #nav-container input[type="checkbox"]:checked ~ #nav-menu {
-        transform: translateY(0); /* Bring down from top */
+        transform: translateY(0);
     }
 
     #nav-container input[type="checkbox"]:checked ~ .hamburger-lines .line1 {
